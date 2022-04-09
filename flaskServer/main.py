@@ -2,16 +2,23 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+"""
+def shutdown():
+    os.system("python src/freeport/freeport.py 5000")
+"""
 
-@app.route('/', methods=['GET', 'POST']
-           )
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('home.html')
 
 
+"""
 @app.route('/secret')
 def secret():
-    return render_template('mainPage.html')
+    shutdown()
+    return 'server-shutdown'
+"""
 
 
 @app.route('/login')
