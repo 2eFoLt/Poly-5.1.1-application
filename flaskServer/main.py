@@ -1,35 +1,23 @@
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
-
-"""
-def shutdown():
-    os.system("python src/freeport/freeport.py 5000")
-"""
+app._static_folder = "static"
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('home.html')
-
-
-"""
-@app.route('/secret')
-def secret():
-    shutdown()
-    return 'server-shutdown'
-"""
+    return render_template('newMainPage.html')
 
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('newLoginPage.html')
 
 
 @app.route('/log-success', methods=['POST'])
 def success():
     if request.method == 'POST':
-        log = request.form['login']
+        log = request.form['email']
         passwd = request.form['password']
         return render_template('success.html', login=log, password=passwd)
     else:
