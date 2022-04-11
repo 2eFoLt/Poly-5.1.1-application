@@ -6,7 +6,12 @@ app._static_folder = "static"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('newMainPage.html')
+    return render_template('newStartPage.html')
+
+
+@app.route('/checkout', methods=['GET'])
+def checkout():
+    return render_template('newCheckoutPage.html')
 
 
 @app.route('/login')
@@ -19,7 +24,7 @@ def success():
     if request.method == 'POST':
         log = request.form['email']
         passwd = request.form['password']
-        return render_template('success.html', login=log, password=passwd)
+        return render_template('newMainPage.html', login=log, password=passwd)
     else:
         pass
 
@@ -32,5 +37,5 @@ def <html-name>():
 """
 if __name__ == '__main__':
     app.run(
-        # host='0.0.0.0', port=5151
+         host='0.0.0.0', port=5151
     )
