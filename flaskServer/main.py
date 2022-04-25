@@ -1,19 +1,11 @@
-from flask import Flask, render_template, request, session
-from flask_login import LoginManager
+from flask import Flask, render_template, request, session, redirect, url_for
 from werkzeug.security import generate_password_hash
+import random
 # check_password_hash
-# from dbmanager import User
-# import random
+
 app = Flask(__name__)
 app._static_folder = "static"
 app.secret_key = generate_password_hash("IWasHere")
-login_manager = LoginManager()
-login_manager.init_app(app)
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return session['cur_usr']
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -28,9 +20,24 @@ def checkout():
 
 @app.route('/login')
 def login():
-    if 'cur_usr' in session:
-        render_template('newMainPage.html', login=session['cur_usr'])
+    if 'email' in session:
+        return redirect(url_for('main'))
     return render_template('newLoginPage.html')
+
+
+@app.route('/main')
+def main():
+    if 'email' in session:
+        return render_template('newMainPage.html', login=session['email'])
+    else:
+        redirect(url_for('login'))
+
+
+@app.route('/logout')
+def logout():
+    session.pop('email', None)
+    session.pop('hash', None)
+    return redirect(url_for('index'))
 
 
 @app.route('/log-success', methods=['POST'])
@@ -38,9 +45,12 @@ def success():
     if request.method == 'POST':
         email = request.form['email']
         passwd = request.form['password']
-        if 'cur_usr' not in session:
-            session['cur_usr'] = email
-        return render_template('newMainPage.html', login=session['cur_usr'])
+        userid = random.randint(1, 1000)
+        if email not in session:
+            session['email'] = email
+            session['hash'] = generate_password_hash(passwd)
+            session['id'] = userid
+        return redirect(url_for('main'))
     else:
         pass
 

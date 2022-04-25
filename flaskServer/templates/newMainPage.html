@@ -50,6 +50,12 @@
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
+          <div class="container">
+            <div class="row">
+              <h5 class="text-white">{{login}}</h5>
+              <form action="/logout"><button type="submit" class="rounded">Выйти</button></form>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -58,7 +64,7 @@
 
       <section class="jumbotron text-center">
         <div class="container">
-          <h1 class="jumbotron-heading">Здравствуй, {{login}}</h1>
+          <h1 class="jumbotron-heading">Здравствуй, пользователь</h1>
           <p class="lead text-muted">Короткий текст про наше меню</p>
           <p>
             <a href="https://getbootstrap.com/docs/4.1/examples/album/#" class="btn btn-primary my-2">Основная кнопка</a>
