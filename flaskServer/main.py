@@ -1,7 +1,19 @@
-from flask import Flask, render_template, request
-
+from flask import Flask, render_template, request, session
+from flask_login import LoginManager
+from werkzeug.security import generate_password_hash
+# check_password_hash
+# from dbmanager import User
+# import random
 app = Flask(__name__)
 app._static_folder = "static"
+app.secret_key = generate_password_hash("IWasHere")
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return session['cur_usr']
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -16,15 +28,19 @@ def checkout():
 
 @app.route('/login')
 def login():
+    if 'cur_usr' in session:
+        render_template('newMainPage.html', login=session['cur_usr'])
     return render_template('newLoginPage.html')
 
 
 @app.route('/log-success', methods=['POST'])
 def success():
     if request.method == 'POST':
-        log = request.form['email']
+        email = request.form['email']
         passwd = request.form['password']
-        return render_template('newMainPage.html', login=log, password=passwd)
+        if 'cur_usr' not in session:
+            session['cur_usr'] = email
+        return render_template('newMainPage.html', login=session['cur_usr'])
     else:
         pass
 
