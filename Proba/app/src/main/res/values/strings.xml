@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">QiuckPick</string>
+    <string name="sales_icon">Sales</string>
+    <string name="contacts_text">Контакты</string>
+    <string name="about_text">Про нас</string>
+    <string name="main_text">Главная</string>
+    <string name="logo_1">Quick</string>
+    <string name="logo_2">Pick</string>
+    <string name="food">Блюда</string>
+    <string name="beef">Стейки</string>
+    <string name="sushi">Суши</string>
+    <string name="fast_food">Фастфуд</string>
+    <string name="post">Постное</string>
+    <string name="hot_dog">Хот-Дог</string>
+    <string name="pizza">Пицца</string>
+    <string name="dessert">Десерты</string>
+    <string name="dodo">Додо Пицца ₱</string>
+    <string name="kfc">KFC ₱</string>
+    <string name="burger_king">BurgerKing ₱</string>
+    <string name="papa">Papa jons</string>
+    <string name="zotman">Zotman Pizza</string>
+    <string name="PizzaHut">PizzaHut</string>
+    <string name="JamesItalian">James Italian</string>
+    <string name="EazzyPizzy">Eazzy Pizzy</string>
+    <string name="DominosPizza">Dominos Pizza</string>
+    <string name="Dodo_Pizza">Dodo Pizza</string>
+    <string name="Mac">McDonald"s</string>
+    <string name="Sub">Subway</string>
+    <string name="KFC">KFC</string>
+    <string name="NewYork">NewYork Burger</string>
+    <string name="BK">Burger King</string>
+    <string name="Farsh">#Farsh</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="large_text">
+
+    </string>
+    <string name="action_settings">Settings</string>
+</resources>
